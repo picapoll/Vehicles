@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <title>Mi Taller</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+</head>
+
+<body>
+  <!--  <p id="carInfo"></p>
+    <button onclick="createCar('1212SDS','SEAT','ROJO')">Create car</button> -->
+  <div class="jumbotron">
+    <h1 class="text-center">Ejercicio de Vehículos</h1>
+
+  </div>
+  <!-- Bootsrap form -->
+  <!-- Add car-->
+  <div class="container-fluid ">
+  <form id="addcarfrm" onsubmit="return false">
+    <div class="form-row">
+      <div class="col-md-4 mb-3">
+        <label for="validationDefault01">Plate</label>
+        <input type="text" class="form-control" id="plate" name="plate"  placeholder="Plate" value="ABCD123" >
+      </div>
+      
+      <div class="col-md-4 mb-3">
+        <label for="validationDefault02">Brand</label>
+        <input type="text" class="form-control" id="brand" name="brand" placeholder="Brand" value="SEAT" >
+      </div>
+      <div class="col-md-4 mb-3">
+        <label for="validationDefault03">Color</label>
+        <input type="text" class="form-control" id="color" name="color" placeholder="Color" value='ROJO' >
+      </div>
+    </div>
+    <button id="addCarbtn" class="btn btn-primary" onclick="addCarInfo()">Create Car</button>
+  </form>
+
+  <!-- Add Wheels-->
+  <form id="addwheelsfrm" onsubmit="return false" style="display: none;">
+    <div class="form-row ">
+
+      <div class="col-md-3 col-sm-6 col-xs-12">
+        <label for="marcaRueda1">Marca Rueda 1</label>
+        <input type="text" class="form-control" id="mr1" placeholder="Marca Rueda 1"  value='DLC' >
+      </div>
+      <div class="col-md-3 col-sm-6 col-xs-12">
+        <label for="diametroRueda1">Diametro Rueda 1</label>
+        <input type="text" class="form-control" id="dr1" placeholder="Diametro Rueda 1" name="wheel" value='1' >
+      </div>
+      <div class="col-md-3 col-sm-6 col-xs-123">
+        <label for="marcaRueda2">Marca Rueda 2</label>
+        <input type="text" class="form-control" id="mr2" placeholder="Marca Rueda 2"  value='DLC' >
+      </div>
+      <div class="col-md-3 col-sm-6 col-xs-12">
+        <label for="diametroRueda2">Diametro Rueda 2</label>
+        <input type="text" class="form-control" id="dr2" placeholder="Diamtro Rueda 2" name="wheel" value='1' >
+      </div>
+    </div>
+    <div class="form-row">
+      <div class="col-md-3 col-sm-6 col-xs-12">
+        <label for="marcaRueda3">Marca Rueda 3</label>
+        <input type="text" class="form-control" id="mr3" placeholder="Marca Rueda 3"  value='DLC' >
+      </div>
+      <div class="col-md-3 col-sm-6 col-xs-12">
+        <label for="diametroRueda3">Diametro Rueda 3</label>
+        <input type="text" class="form-control" id="dr3" placeholder="Diametro Rueda 3" name="wheel" value='1'>
+      </div>
+      <div class="col-md-3 col-sm-6 col-xs-123">
+        <label for="marcaRueda4">Marca Rueda 4</label>
+        <input type="text" class="form-control" id="mr4" placeholder="Marca Rueda 4" value='DLC' >
+      </div>
+      <div class="col-md-3 col-sm-6 col-xs-12">
+        <label for="diametroRueda4">Diametro Rueda 2</label>
+        <input type="text" class="form-control" id="dr4" placeholder="Diamtro Rueda 4" name="wheel" value='1'>
+      </div>
+    </div>
+    <button class="btn btn-primary" type="submit"  id="createCarBtn" onclick="AddWheels()" >Add Wheels</button>
+  </form>
+</div>
+<!--Print Results Results -->
+<div class="container-fluid">
+<div class="row" id="results">
+  <div class="col">
+    <p id="carRes"></p>
+  </div>
+  <div class="col"></div>
+  <div class="col"></div>
+  <div class="col"></div>
+</div>
+
+<div class="row" id="results">
+  <div class="col">
+    <p id="plateRes"></p>
+  </div>
+  <div class="col">
+    <p id="brandRes"></p>
+  </div>
+  <div class="col">
+    <p id="colorRes"></p>
+  </div>
+  <div class="col"></div>
+</div>
+
+<div class="row" id="results">
+  <div class="col">
+    <p id="wheelsRes"></p>
+  </div>
+  <div class="col"></div>
+  <div class="col"></div>
+  <div class="col"></div>
+</div>
+
+<div class="row" id="results">
+  <div class="col">
+    <p id="wheel1Res"></p>
+  </div>
+  <div class="col">
+    <p id="wheel2Res"></p>
+  </div>
+  <div class="col">
+    <p id="wheel3Res"></p>
+  </div>
+  <div class="col">
+    <p id="wheel4Res"></p>
+  </div>
+</div>
+</div>
+  <!-- jQuery library -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+  <script type="text/javascript"
+    src="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.0/dist/jquery.validate.min.js"></script>
+
+  <!-- Popper JS -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+
+  <!-- Latest compiled JavaScript -->
+
+  <script src="../models/car.js"></script>
+  <script src="../models/wheel.js"></script>
+  <script src="../controllers/controller.js"></script>
+ <!--  <script src="../js/forms_validation.js"></script> -->
+  <script src="../js/forms.js"></script>
+
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+
+</body>
